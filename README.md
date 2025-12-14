@@ -23,7 +23,18 @@ flutter run
 
 ## Configuração
 
-Não precisa configurar nada, a PokeAPI é pública e não usa API key.
+A PokeAPI é pública e não precisa de API key.
+
+### Firebase (Opcional)
+
+O Google Analytics é opcional. O app funciona normalmente sem configurar.
+
+Se quiser ativar:
+
+1. Cria um projeto no [Firebase Console](https://console.firebase.google.com/)
+2. Adiciona os apps e baixa os arquivos de config:
+   - Android: `android/app/google-services.json`
+   - iOS: `ios/Runner/GoogleService-Info.plist` (adiciona pelo Xcode)
 
 Se der algum problema, roda `flutter doctor` pra verificar se tá tudo certo com seu ambiente.
 
