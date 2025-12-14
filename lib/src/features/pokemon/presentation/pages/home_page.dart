@@ -55,6 +55,7 @@ class _HomeView extends StatelessWidget {
         child: Scaffold(
           backgroundColor: AppColors.fillBackground,
           body: SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
             child: Column(
               crossAxisAlignment: .start,
               children: [
