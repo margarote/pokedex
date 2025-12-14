@@ -6,12 +6,16 @@ import FirebaseAnalytics
 @main
 @objc class AppDelegate: FlutterAppDelegate {
     private let channelName = "com.pokedex/analytics"
+    private var isFirebaseConfigured = false
 
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        FirebaseApp.configure()
+        if Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") != nil {
+            FirebaseApp.configure()
+            isFirebaseConfigured = true
+        }
 
         let controller = window?.rootViewController as! FlutterViewController
         let channel = FlutterMethodChannel(name: channelName, binaryMessenger: controller.binaryMessenger)
@@ -27,9 +31,10 @@ import FirebaseAnalytics
     private func handleMethodCall(call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "logEvent":
-            guard let args = call.arguments as? [String: Any],
+            guard isFirebaseConfigured,
+                  let args = call.arguments as? [String: Any],
                   let name = args["name"] as? String else {
-                result(FlutterError(code: "INVALID_ARGS", message: "Missing event name", details: nil))
+                result(nil)
                 return
             }
             let params = args["params"] as? [String: Any] ?? [:]
