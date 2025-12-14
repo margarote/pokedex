@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     PokemonAnalytics.logHomeScreen();
     return BlocProvider(
-      create: (_) => injector.pokemonListCubit..loadPokemons(),
+      create: (_) => sl<PokemonListCubit>()..loadPokemons(),
       child: const _HomeView(),
     );
   }

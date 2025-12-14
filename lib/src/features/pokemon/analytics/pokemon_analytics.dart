@@ -1,3 +1,4 @@
+import '../../../core/analytics/analytics_service.dart';
 import '../../../injection_container.dart';
 
 abstract class PokemonAnalytics {
@@ -11,14 +12,14 @@ abstract class PokemonAnalytics {
   static const _paramPokemonName = 'pokemon_name';
   static const _paramSearchQuery = 'search_query';
 
-  static void logHomeScreen() =>
-      injector.analytics.logScreenView(_screenHome);
+  static AnalyticsService get _analytics => sl<AnalyticsService>();
 
-  static void logDetailScreen() =>
-      injector.analytics.logScreenView(_screenDetail);
+  static void logHomeScreen() => _analytics.logScreenView(_screenHome);
+
+  static void logDetailScreen() => _analytics.logScreenView(_screenDetail);
 
   static void logPokemonSelected(int id, String name) {
-    injector.analytics.logEvent(_eventPokemonSelected, {
+    _analytics.logEvent(_eventPokemonSelected, {
       _paramPokemonId: id,
       _paramPokemonName: name,
     });
@@ -26,7 +27,7 @@ abstract class PokemonAnalytics {
 
   static void logSearch(String query) {
     if (query.isEmpty) return;
-    injector.analytics.logEvent(_eventSearchPerformed, {
+    _analytics.logEvent(_eventSearchPerformed, {
       _paramSearchQuery: query,
     });
   }

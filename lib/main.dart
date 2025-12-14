@@ -6,7 +6,7 @@ import 'src/injection_container.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  injector.init();
+  setupDependencies();
   runApp(const MyApp());
 }
 
