@@ -15,11 +15,9 @@ class GoogleAnalyticsService implements AnalyticsService {
         'name': name,
         'params': params ?? {},
       });
+      debugPrint('[Analytics] Event logged: $name ${params ?? ''}');
     } on PlatformException catch (e) {
-      assert(() {
-        debugPrint('[Analytics] Failed to log event "$name": $e');
-        return true;
-      }());
+      debugPrint('[Analytics] Failed to log event "$name": $e');
     }
   }
 
