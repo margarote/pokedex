@@ -1,0 +1,42 @@
+name: pokedex
+description: "Pokedex"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Network
+  dio: ^5.4.0
+  cached_network_image: ^3.4.1
+
+  # UI
+  flutter_svg: ^2.0.10+1
+
+  # State Management (Cubit)
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  # Testing
+  mocktail: ^1.0.4
+  bloc_test: ^10.0.0
+  network_image_mock: ^2.1.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
